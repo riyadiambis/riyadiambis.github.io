@@ -3,131 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime List</title>
+    <title>AnimeList - Discover & Filter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="kepala">
-        <div class="kepala-konten">
-            <h1>List Anime</h1>
-            <input type="text" placeholder="Cari Anime" class="cari-anime" id="cariAnime">
-        </div>
+
+    <header class="header">
+        <div class="container">
+                <a href="#" class="logo">AnimeList</a>
+                    <button id="theme-toggle" class="theme-button">🌙</button>
+                </div>
     </header>
-    <hr>
-    <section class="bagian-filter">
-        <h2>Filter Anime</h2>
-        <div class="kelompok-tombol">
-            <button class="tombol tombol-utama">Terbaru</button>
-            <button class="tombol tombol-utama">Terlama</button>
-            <button class="tombol tombol-utama">Terpopuler</button>
-            <button class="tombol tombol-utama">Termantap</button>
-            <button class="tombol tombol-utama">Tersetres</button>
-        </div>
-    </section>
-    <hr>
-    <div class="tata-letak">
-        <aside class="sidebar">
-            <h2>Genre</h2>
-            <div class="sidebar-menu">
-                <button class="tombol tombol-kedua">Action</button>
-                <button class="tombol tombol-kedua">Romance</button>
-                <button class="tombol tombol-kedua">Isekai</button>
-                <button class="tombol tombol-kedua">Slice of Life</button>
-                <button class="tombol tombol-kedua">Shonen</button>
-                <button class="tombol tombol-kedua">Shoujo</button>
-                <button class="tombol tombol-kedua">Mecha</button>
+
+    <main class="container">
+        <div class="controls-container">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search by title...">
+            </div>
+            <div class="filter-bar">
+                <button class="filter-button active" data-genre="all">All</button>
+                <button class="filter-button" data-genre="action">Action</button>
+                <button class="filter-button" data-genre="romance">Romance</button>
+                <button class="filter-button" data-genre="isekai">Isekai</button>
+                <button class="filter-button" data-genre="shonen">Shonen</button>
+                </div>
             </div>
 
-            <h2>Tahun</h2>
-            <div class="sidebar-menu">
-                <button class="tombol tombol-kedua">2020</button>
-                <button class="tombol tombol-kedua">2021</button>
-                <button class="tombol tombol-kedua">2022</button>
-                <button class="tombol tombol-kedua">2023</button>
-                <button class="tombol tombol-kedua">2024</button>
-                <button class="tombol tombol-kedua">2025</button>
-                <button class="tombol tombol-kedua">Mendatang</button>
-            </div>
-
-            <h2>Musim</h2>
-            <div class="sidebar-menu">
-                <button class="tombol tombol-kedua">Spring</button>
-                <button class="tombol tombol-kedua">Summer</button>
-                <button class="tombol tombol-kedua">Winter</button>
-                <button class="tombol tombol-kedua">Fall</button>
-                <button class="tombol tombol-kedua">Hujan</button>
-                <button class="tombol tombol-kedua">Kemarau</button>
-            </div>
-
-            <h2>Lainnya</h2>
-            <button class="tombol tombol-kedua">Opsi HKI</button>
-        </aside>
-
-        <main class="konten-utama">
-            <h2>Daftar Anime</h2>
-            <div class="grid-anime">
-                <div class="kartu-anime">
-                    <img src="fotoanime/Naruto Poster.jpg" alt="Anime Naruto">
-                    <div class="kartu-isi">
+        <div class="anime-grid" id="anime-grid">
+            <!-- Anime Cards -->
+            <div class="anime-card" data-genre="action,shonen" data-title="Naruto">
+                    <img src="fotoanime/Naruto Poster.jpg" alt="Naruto">
+                <div class="card-overlay">
                         <h4>Naruto</h4>
-                        <p>Anime tentang ninja yang terbuly</p>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
-                    <img src="fotoanime/tonikawa.png" alt="Anime Tonikawa">
-                    <div class="kartu-isi">
-                        <h4>Tonikaku Kawaii Season 2</h4>
-                        <p>Anime romace terbaik best saler</p>
+            <div class="anime-card" data-genre="romance" data-title="Tonikaku Kawaii">
+                    <img src="fotoanime/tonikawa.png" alt="Tonikaku Kawaii">
+                <div class="card-overlay">
+                        <h4>Tonikaku Kawaii</h4>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
-                    <img src="fotoanime/borutod.png" alt="Borutod">
-                    <div class="kartu-isi">
-                        <h4>Borutod</h4>
-                        <p>Perusak anime Naruto</p>
+            <div class="anime-card" data-genre="action,shonen" data-title="Boruto">
+                    <img src="fotoanime/borutod.png" alt="Boruto">
+                <div class="card-overlay">
+                        <h4>Boruto</h4>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
-                    <img src="fotoanime/dragonball.png" alt="dragonball">
-                    <div class="kartu-isi">
+            <div class="anime-card" data-genre="action,shonen" data-title="Dragon Ball">
+                    <img src="fotoanime/dragonball.png" alt="Dragon Ball">
+                <div class="card-overlay">
                         <h4>Dragon Ball</h4>
-                        <p>Mengumnpulkan bola</p>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
+            <div class="anime-card" data-genre="romance" data-title="Summer Pockets">
                     <img src="fotoanime/summerpockets.png" alt="Summer Pockets">
-                    <div class="kartu-isi">
+                <div class="card-overlay">
                         <h4>Summer Pockets</h4>
-                        <p>sedih banget ini anime</p>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
-                    <img src="fotoanime/mushokuten.png" alt="mushola">
-                    <div class="kartu-isi">
+            <div class="anime-card" data-genre="isekai" data-title="Mushoku Tensei">
+                    <img src="fotoanime/mushokuten.png" alt="Mushoku Tensei">
+                <div class="card-overlay">
                         <h4>Mushoku Tensei</h4>
-                        <p>Nah agak laen tapi seru</p>
                     </div>
                 </div>
-
-                <div class="kartu-anime">
-                    <img src="fotoanime/rezero.png" alt="zsro">
-                    <div class="kartu-isi">
+            <div class="anime-card" data-genre="isekai" data-title="Re:Zero">
+                    <img src="fotoanime/rezero.png" alt="Re:Zero">
+                <div class="card-overlay">
                         <h4>Re:Zero</h4>
-                        <p>Tantang looping</p>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Frieren">
+                    <img src="./fotoanime/download (1).jpg" alt="Frieren">
+                <div class="card-overlay">
+                        <h4>Frieren</h4>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Demon Slayer">
+                    <img src="./fotoanime/Demon Slayer_ Kimetsu no Yaiba.jpg" alt="Demon Slaye">
+                <div class="card-overlay">
+                        <h4>Demon Slayer</h4>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="romance" data-title="Kimi No Na wa">
+                    <img src="./fotoanime/Juli 2019 _ Makoto Shinkai _ Kimi no na wa [Your Name] _ 2016 Japan.jpg" alt="Kimi No Na wa">
+                <div class="card-overlay">
+                    <h4>Kimi No Na Wa</h4>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="romance" data-title="Kami Sama Ni Natta Hi">
+                    <img src="./fotoanime/Kamisama ni Natta Hi.jpg" alt="Kami Sama Ni Natta Hi">
+                <div class="card-overlay">
+                        <h4>Kami Sama Ni Natta Hi</h4>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="romance" data-title=romance>"Tenki No Ko">
+                    <img src="./fotoanime/Tenki No Ko.jpg" alt="Tenki No Ko">
+                <div class="card-overlay">
+                        <h4>Tenki No Ko</h4>
+                    </div>
+                </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="The Iceblade Sorcerer Shall Rule The World">
+                    <img src="./fotoanime/The Iceblade Sorcerer Shall Rule The World.jpg" alt="The Iceblade Sorcerer Shall Rule The World">
+                <div class="card-overlay">
+                        <h4>The Iceblade Sorcerer Shall Rule The World</h4>
                     </div>
                 </div>
             </div>
-        </main>
+    </main>
+
+    <div id="modal-container" class="modal-container">
+        <div class="modal-content">
+            <button id="close-modal" class="close-button">&times;</button>
+            <img id="modal-img" src="" alt="Anime Poster">
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <p id="modal-description"></p>
+                <button id="rate-anime" class="rate-button">Rate This Anime</button>
+            </div>
+        </div>
     </div>
+
+    <a href="#" id="back-to-top" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 8h-6v8h-4v-8H4l8-8z"/></svg>
+    </a>
+
+    <!-- Form Rating Anime -->
+    <div id="form-modal" class="form-modal">
+        <div class="form-content">
+            <button class="close-form">&times;</button>
+            <h2>Rate Anime</h2>
+            <form id="anime-form" novalidate>
+                <div class="rating-info">
+                    <img id="selected-anime-img" src="" alt="Selected Anime">
+                    <h3 id="selected-anime-title"></h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="anime-rating">Your Rating* (1-10)</label>
+                    <div class="rating-input">
+                        <input type="number" id="anime-rating" min="1" max="10" required>
+                        <div class="star-rating">
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="6">⭐</span>
+                            <span class="star" data-rating="8">⭐</span>
+                            <span class="star" data-rating="10">⭐</span>
+                        </div>
+                    </div>
+                    <span class="error-message"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="anime-review">Your Review*</label>
+                    <textarea id="anime-review" required minlength="10" maxlength="500" 
+                        placeholder="Share your thoughts about this anime..."></textarea>
+                    <span class="error-message"></span>
+                    <div class="character-count">0/500</div>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Rating</button>
+            </form>
+        </div>
     </div>
-    <footer class="kaki">
-        <p>Website seseorang yang gabut sih</p>
-        <h5>Instagram : @riyadi ofisharu</h5>
+
+    <!-- Error Popup -->
+    <div id="error-popup" class="error-popup">
+        <div class="error-content">
+            <span class="error-icon">⚠️</span>
+            <p id="error-message"></p>
+            <button class="error-close">OK</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AnimeList. A project by PT. TAMPOSO SEHAT SEHAT NGODINGNYA.</p>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
