@@ -1,0 +1,212 @@
+<?php
+session_start();
+
+$search_query = $_GET['search'] ?? '';
+$genre_filter = $_GET['genre'] ?? 'all';
+$sort_by = $_GET['sort'] ?? 'title';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeList - Discover & Filter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.php" class="logo">AnimeList</a>
+            <div>
+                <?php if (isset($_SESSION['username'])): ?>
+                    <span style="margin-right: 1rem; font-weight: 600;">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+                    <a href="logout.php" class="theme-button" style="text-decoration: none;">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="theme-button" style="text-decoration: none;">Login</a>
+                <?php endif; ?>
+                <button id="theme-toggle" class="theme-button">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <?php if (isset($_SESSION['username'])): ?>
+            <div class="controls-container">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search by title..." value="<?php echo htmlspecialchars($search_query); ?>">
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-button <?php echo $genre_filter === 'all' ? 'active' : ''; ?>" data-genre="all">All</button>
+                    <button class="filter-button <?php echo $genre_filter === 'action' ? 'active' : ''; ?>" data-genre="action">Action</button>
+                    <button class="filter-button <?php echo $genre_filter === 'romance' ? 'active' : ''; ?>" data-genre="romance">Romance</button>
+                    <button class="filter-button <?php echo $genre_filter === 'isekai' ? 'active' : ''; ?>" data-genre="isekai">Isekai</button>
+                    <button class="filter-button <?php echo $genre_filter === 'shonen' ? 'active' : ''; ?>" data-genre="shonen">Shonen</button>
+                </div>
+            </div>
+        <?php else: ?>
+            <div style="background-color: var(--card-bg); padding: 1rem; border-radius: 8px; margin: 1rem 0; border: 1px solid var(--border-color); text-align: center;">
+                <h3>Filtering & Rating Features</h3>
+                <p><a href="login.php">Login</a> to access genre filtering and anime rating features!</p>
+            </div>
+        <?php endif; ?>
+        
+        <div class="anime-grid" id="anime-grid">
+            <!-- Anime Cards -->
+            <div class="anime-card" data-genre="action,shonen" data-title="Naruto">
+                <img src="fotoanime/Naruto Poster.jpg" alt="Naruto">
+                <div class="card-overlay">
+                    <h4>Naruto</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="romance" data-title="Tonikaku Kawaii">
+                <img src="fotoanime/tonikawa.png" alt="Tonikaku Kawaii">
+                <div class="card-overlay">
+                    <h4>Tonikaku Kawaii</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Boruto">
+                <img src="fotoanime/borutod.png" alt="Boruto">
+                <div class="card-overlay">
+                    <h4>Boruto</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Dragon Ball">
+                <img src="fotoanime/dragonball.png" alt="Dragon Ball">
+                <div class="card-overlay">
+                    <h4>Dragon Ball</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="romance" data-title="Summer Pockets">
+                <img src="fotoanime/summerpockets.png" alt="Summer Pockets">
+                <div class="card-overlay">
+                    <h4>Summer Pockets</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="isekai" data-title="Mushoku Tensei">
+                <img src="fotoanime/mushokuten.png" alt="Mushoku Tensei">
+                <div class="card-overlay">
+                    <h4>Mushoku Tensei</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="isekai" data-title="Re:Zero">
+                <img src="fotoanime/rezero.png" alt="Re:Zero">
+                <div class="card-overlay">
+                    <h4>Re:Zero</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Frieren">
+                <img src="./fotoanime/download (1).jpg" alt="Frieren">
+                <div class="card-overlay">
+                    <h4>Frieren</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="Demon Slayer">
+                <img src="./fotoanime/Demon Slayer_ Kimetsu no Yaiba.jpg" alt="Demon Slayer">
+                <div class="card-overlay">
+                    <h4>Demon Slayer</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="romance" data-title="Kimi No Na wa">
+                <img src="./fotoanime/Juli 2019 _ Makoto Shinkai _ Kimi no na wa [Your Name] _ 2016 Japan.jpg" alt="Kimi No Na wa">
+                <div class="card-overlay">
+                    <h4>Kimi No Na Wa</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="romance" data-title="Kami Sama Ni Natta Hi">
+                <img src="./fotoanime/Kamisama ni Natta Hi.jpg" alt="Kami Sama Ni Natta Hi">
+                <div class="card-overlay">
+                    <h4>Kami Sama Ni Natta Hi</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="romance" data-title="Tenki No Ko">
+                <img src="./fotoanime/Tenki No Ko.jpg" alt="Tenki No Ko">
+                <div class="card-overlay">
+                    <h4>Tenki No Ko</h4>
+                </div>
+            </div>
+            <div class="anime-card" data-genre="action,shonen" data-title="The Iceblade Sorcerer Shall Rule The World">
+                <img src="./fotoanime/The Iceblade Sorcerer Shall Rule The World.jpg" alt="The Iceblade Sorcerer Shall Rule The World">
+                <div class="card-overlay">
+                    <h4>The Iceblade Sorcerer Shall Rule The World</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <?php if (isset($_SESSION['username'])): ?>
+        <div id="modal-container" class="modal-container">
+            <div class="modal-content">
+                <button id="close-modal" class="close-button">&times;</button>
+                <img id="modal-img" src="" alt="Anime Poster">
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                    <button id="rate-anime" class="rate-button">Rate This Anime</button>
+                </div>
+            </div>
+        </div>
+                    
+        <a href="#" id="back-to-top" class="back-to-top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 8h-6v8h-4v-8H4l8-8z"/></svg>
+        </a>
+
+        <div id="form-modal" class="form-modal">
+            <div class="form-content">
+                <button class="close-form">&times;</button>
+                <h2>Rate Anime</h2>
+                <form id="anime-form" novalidate>
+                    <div class="rating-info">
+                        <img id="selected-anime-img" src="" alt="Selected Anime">
+                        <h3 id="selected-anime-title"></h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anime-rating">Your Rating* (1-10)</label>
+                        <div class="rating-input">
+                            <input type="number" id="anime-rating" min="1" max="10" required>
+                            <div class="star-rating">
+                                <span class="star" data-rating="2">⭐</span>
+                                <span class="star" data-rating="4">⭐</span>
+                                <span class="star" data-rating="6">⭐</span>
+                                <span class="star" data-rating="8">⭐</span>
+                                <span class="star" data-rating="10">⭐</span>
+                            </div>
+                        </div>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anime-review">Your Review*</label>
+                        <textarea id="anime-review" required minlength="10" maxlength="500"
+                            placeholder="Share your thoughts about this anime..."></textarea>
+                        <span class="error-message"></span>
+                        <div class="character-count">0/500</div>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Rating</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Error Popup -->
+        <div id="error-popup" class="error-popup">
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <p id="error-message"></p>
+                <button class="error-close">OK</button>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AnimeList. A project by PT. TAMPOSO SEHAT SEHAT NGODINGNYA.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
